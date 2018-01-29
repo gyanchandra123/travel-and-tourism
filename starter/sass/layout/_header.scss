@@ -1,0 +1,72 @@
+.header {
+    position: relative;
+    border-radius: 0.5rem;
+    height: 95vh;
+    background-image: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light, 0.801),
+            rgba($color-primary-dark, 0.801)
+        ),
+        url("../img/hero-small.jpg"); // in the normal resolution screen , its loading the normal images
+    background-size: cover;
+    background-position: top;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    //feature query for clip-path property: safari does not support clip-part:
+    /* @media only screen and (clip-path: polygon(0 0)), (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    } */
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
+
+    // making reponsive: dpi= dots per inch
+    // when the resolution = higher, the below code will be applied.
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+        // 600/16 = 37.5em (-webkit-min-device-pixel-ratio: 192dpi) and (min-width: 37.5em),
+        (min-width: 125em) {
+        //2000/16 = 125 em [ 1 em = 16 px]
+        background-image: linear-gradient(to right bottom, rgba(green, 0.801), rgba($color-secondary-dark, 0.801)),
+            url("../img/hero.jpg");
+    }
+
+    /*  @media (min-width: 2000px) {
+        background-image: linear-gradient(
+                to right bottom,
+                rgba($color-primary-light, 0.801),
+                rgba($color-primary-dark, 0.801)
+            ),
+            url("../img/hero.jpg");
+    } */
+
+    //media-query:
+    @include respond(phone) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 87vh, 0 100%);
+    }
+
+    //nesting:
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    /* positioning at centre */
+    &__text-box {
+        text-align: center;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

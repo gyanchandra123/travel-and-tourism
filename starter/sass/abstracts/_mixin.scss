@@ -1,0 +1,90 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+//MEDIA QUERY MANAGER
+//:[typogrpahy,grid,header-clip,navigation-button,layout,footer,
+//section-about,utility,composition,feature-box,card(bringing back portion at front),
+//stories,form,pop-up ]..
+
+/* 
+0-600px   : mobile,
+600 -900 px : tablet portrait,
+900-1200px :tablet landscape,
+1200 - 1800 px : where normal styles are applied
+1800 px - < : all remaining : bigger screens are applied.
+
+*/
+
+/* @mixin respond-phone {
+    @media (max-width: 600px) {
+        @content;
+    }
+} */
+
+/* 
+breakpoints:
+1. phone
+2.tab-port
+3.tab-land
+4.big-desktop
+
+1em = 16px
+
+*/
+
+@mixin respond($breakpoint) {
+    @if ($breakpoint == phone) {
+        @media only screen and (max-width: 37.5em) {
+            @content;
+        } // 600px/16px
+    }
+
+    @if ($breakpoint == ipad) {
+        // 768px/16px
+        @media only screen and (max-width: 48em) {
+            @content;
+        }
+    }
+    @if ($breakpoint == tab-port) {
+        // 900px/16px
+        @media only screen and (max-width: 56.25em) {
+            @content;
+        }
+    }
+
+    @if ($breakpoint == tab-land) {
+        // 1200px/16px
+        @media only screen and(max-width: 75em) {
+            @content;
+        }
+    }
+
+    @if ($breakpoint == big-desktop) {
+        // 1800px/16px
+        @media only screen and (min-width: 112.5em) {
+            @content;
+        }
+    }
+}
+
+//FEATURE QUERY RELATED :
+/* 
+ min-resolution [for safari it is :  -webkit-min-device-pixel-ratio:2],(header.scss)
+ backface-visibility,perspective (not on mozilla), (card.scss)
+ clip-path(not supported for safari), header.scss [about clip-part.]
+ shape-outside() in stories.scss, 
+ background-clip for headers.(featureBox.scss)
+
+*/
+
+//MEDIA -QUERY FOR TOUCH-SCREEN DEVICES :where hover = not possible (ie touch screen devices like mobile phone)
+/* 
+related with card 
+ @media only screen and (max-width: 56.25em), only screen and (hover: none) 
+
+*/

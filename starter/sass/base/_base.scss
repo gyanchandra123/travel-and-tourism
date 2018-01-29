@@ -1,0 +1,46 @@
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit; /* inheritance */
+}
+
+html {
+    /* font-size :10px; this define what 1rem is */
+    font-size: 62.5%;   //1 rem = 10px; 10px/16px = 62.50%
+
+   
+
+    @include respond(tab-land){
+        font-size: 56.25%;     // width =<1200px; 1 rem = 9px ; 9px/16px = 56.25%
+    };
+
+    @include respond(tab-port){
+        font-size: 50%;     // width =<900px; 1 rem = 8px; 8px/16px = 50%   
+    };   
+
+    @include respond(big-desktop){
+        font-size: 75%;     // 1 rem = 12px, 12px/16px = 75%
+    };
+}
+
+body {
+    box-sizing: border-box;
+    padding:1rem 3rem;
+
+    @include respond(tab-port){
+        padding:0;  // width =<900px; 1 rem = 8px; 8px/16px = 50%   
+    };  
+}
+
+::selection{
+    background-color: $color-primary;
+    color: $color-white;
+   
+}
+
+/* 
+
+Base+ typography > general layout +grid > pagelayout > components.
+*/

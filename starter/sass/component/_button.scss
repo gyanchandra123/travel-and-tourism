@@ -1,0 +1,71 @@
+.btn {
+    animation-name: showUp;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    //animation-delay: 1s;
+
+    //changing the button  border
+
+    &,
+    &:link,
+    &:visited {
+        border-radius: 10rem;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1rem 2.3rem;
+        display: inline-block;
+        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+    }
+
+    &--white {
+        color: darkblue;
+        background-color: $color-white;
+    }
+
+    &--green {
+        color: $color-white;
+        background-color: $color-primary;
+    }
+
+    &:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-btn-pseudo, 0.801);
+    }
+
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba($color-btn-pseudo, 0.801);
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        text-decoration: none;
+        border-bottom: 2px solid $color-primary-dark;
+        padding: 7px;
+        display: inline-block;
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 3rem rgba($color-black, 0.801);
+
+        border-radius: 5px;
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.801);
+    }
+}

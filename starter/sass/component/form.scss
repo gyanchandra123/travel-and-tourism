@@ -1,0 +1,131 @@
+.form {
+    &__heading-color {
+        background-image: linear-gradient(to right, #c31bce, #1b27ce) !important;
+    }
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        color: inherit;
+        font-size: 1.5rem;
+        font-family: inherit;
+        padding: 1.2rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, 0.5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        display: block;
+        width: 90%;
+        transition: all 0.7s;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+            border-bottom: 3px solid $color-primary-dark;
+            transition: all 0.7s;
+
+            &:invalid {
+                border-bottom: 3px solid $color-secondary-dark;
+            }
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-1;
+        }
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: 0.7rem;
+        display: block;
+        transition: all 0.3s;
+        color: rgba(0, 0, 0, 0.7) !important;
+    }
+
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    &__radio-group {
+        width: 49%;
+        display: inline-block;
+
+        //media -query
+        @include respond(phone) {
+            width: 45%;
+        }
+    }
+
+    &__radio-label {
+        color: #a916c3 !important;
+        cursor: pointer;
+        font-size: $default-font-size;
+        position: relative;
+        padding-left: 3.5rem;
+
+        //media -query
+        @include respond(phone) {
+            padding-left: 2.7rem;
+        }
+    }
+
+    &__radio-button {
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -0.3rem;
+
+        &::after {
+            content: "";
+            height: 1.07rem;
+            width: 1rem;
+            display: block;
+            background-color: $color-primary;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+    }
+
+    &__radio {
+        &-input {
+            visibility: hidden;
+        }
+
+        &-input:checked + &-label > &-button {
+            &::after {
+                background-color: $color-primary;
+                opacity: 1;
+            }
+        }
+    }
+
+    //media -query
+    @include respond(phone) {
+        width: 37rem;
+        
+    }
+}
+
+.rowFrom {
+    height: 45rem;
+    max-width: 103rem;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    box-shadow: 0.5rem 1rem 1.5rem #888888;
+    position: relative;
+    overflow: hidden;
+    margin-top: -8rem;
+}

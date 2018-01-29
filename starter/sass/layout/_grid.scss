@@ -1,0 +1,88 @@
+.row {
+    max-width: $grid-width;
+
+    //media-query:tablet
+    @include respond(tab-port) {
+        max-width: 50rem;
+        padding: 0 4rem;         
+    }
+
+    //media-query:phone
+    @include respond(phone) {        
+        max-width: $grid-width-phone !important;
+        padding: 0 2rem;
+    }
+
+    margin: 0 auto; 
+       
+
+    color: rgb(107, 110, 106);
+    /*  background-color:grey; */
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;  
+
+        //media-query:tablet
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
+
+        //media-query:phone
+        @include respond(phone) {
+            margin-bottom: $gutter-vertical-mini;
+        }
+    }
+
+    
+
+    @include clearfix;
+
+    [class^="col-"] {
+        float: left;
+
+        &:not(:last-child) {
+            // margin-right: 4%;
+            margin-right: $gutter-horizontal;
+
+            //media-query: tablet
+            @include respond(tab-port) {
+                margin-right: 0 !important;
+                margin-bottom: $gutter-vertical-small;
+            }
+
+            //media-query :phone
+            @include respond(phone) {
+                margin-right: 0 !important;
+                margin-bottom: $gutter-vertical-mini;
+            }
+        }
+
+        //media-query:tablet
+        @include respond(tab-port) {
+            width: 100% !important;
+        }
+
+        //media-query:phone
+        @include respond(phone) {
+            width: 100% !important;
+        }
+    }
+
+    .col-1-of-2 {
+        // width: 48%;
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+
+    .col-1-of-4 {
+        /* width: 22.5%;   */
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+        margin: 0 auto;
+    }
+
+    .col-1-of-3 {
+        /* width: 22.5%;   */
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+        margin: 0 auto;
+
+       
+    }
+}
